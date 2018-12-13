@@ -78,9 +78,21 @@ public:
 		int targetY;
         	//cout << "Player's position: X=" << posX << ", Y=" << posY << endl; // Debug purposes
 		
-		while (valid == 0)
+		while (valid == 0) // Doesn't end turn until you make a valid input
 		{
-	                cout << "Input a direction to move (A for left, D for right, W for up, S for down): ";
+			cout << endl;
+			cout << endl;
+
+	                if (hasKey == 0)
+			{
+				cout << "Objective: Find the key (k)" << endl;
+			}
+			else
+			{
+				cout << "Objective: Find the exit (E)" << endl;
+			}
+			
+			cout << "Input a direction to move (A for left, D for right, W for up, S for down): ";
 	                cin >> dir;
 
 			if (dir == 'A' || dir == 'a') // Left
@@ -426,6 +438,14 @@ void drawBoard() // Prints out entire visible maze
 }
 
 
+void clearSpace() // Clears up screen clutter
+{
+	for (int i = 0; i < 35; i++)
+	{
+		cout << endl;
+	}
+}
+
 int main()
 {
 	cout << "Welcome to the Labyrinth." << endl;
@@ -452,6 +472,7 @@ int main()
 	{
 		p.move();
 		e.move();
+		clearSpace();
 		drawBoard();
 	}
 	
